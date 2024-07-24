@@ -210,10 +210,15 @@ jobs:
   test_job:
     docker:
       - image: cimg/base:stable
+    resource_class: small
     steps:
-      - run: |
-          echo "Running on branch << pipeline.git.branch >> "
-          echo "\n\nRunning on commit << pipeline.git.revision >>"
+      - run:
+          name: Where am I?
+          command: |
+            echo "Running on branch << pipeline.git.branch >> "
+            echo ""
+            echo ""
+            echo "Running on commit << pipeline.git.revision >>"
 workflows:
 
   test_workflow:
